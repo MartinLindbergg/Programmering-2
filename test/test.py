@@ -1,9 +1,22 @@
 from flask import Flask, render_template
+
 app = Flask(__name__)
+
+
+page = """
+    <html>
+    <head><title>Hem</title></head>
+    <body>
+    <h1>Titel</h1>
+    <p>Detta är Hem<p>
+    </body>
+    </html>
+"""
+
 
 @app.route("/")
 def home():
-    return "<h1>Home<h1/>"
+    return page
 
 @app.route("/login")
 def login():
@@ -11,7 +24,8 @@ def login():
 
 @app.route("/logout")
 def logout():
-    return render_template('logout.html')
+    return render_template(logout.html)
+
 
 
 if __name__ == "__main__":
