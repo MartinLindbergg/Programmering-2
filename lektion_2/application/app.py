@@ -1,38 +1,29 @@
 
-from flask import Flask, render_template
+from flask import Flask
+import pandas as pd
 
 app = Flask(__name__)
 
+@app.route("/")
+def lista():
+    dict = {
+    "landsdel": ["götaland", "svealand", "norrland"],
+    "landskap": ["östergötland", "västergötland", "södermanland"],
+    "stad":     ["linköping", "motala", "mjölby", "mariefred", "nyköping", "piteå", "sandviken", "sollefteå", "kramfors", "örnsköldsvik"]
+            }
 
-page = """
-    <html>
-    <head><title>Hem</title></head>
-    <body>
-    <h1>Titel</h1>
-    <p>Detta är Hem<p>
-    </body>
-    </html>
-"""
+    df = pd.DataFrame(dict)
+    html = df.to_html()
+
 
 
 @app.route("/")
 def home():
-    return page
+    return "hej"
 
-@app.route("/login")
-def login():
-    return "<h1>LogIn<h1/>"
-
-@app.route("/logout")
-def logout():
-    return render_template(logout.html)
 
 
 
 if __name__ == "__main__":
     app.run(debug=True)
 
-
-
-#GÅR INTE ATT INSTALLERA MYSQL WHYYYY?
-#GÅR INTE ATT HÄMTA HTMLFILEN MED RENDER_TEMPLATE WHYYYY?
