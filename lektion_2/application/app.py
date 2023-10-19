@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route("/")
 def lista():
     dict = {
-    "landsdel": ["götaland", "svealand", "norrland"],
+    "landsdel": ["götaland", "götaland", "götaland", "svealand", "svealand", "norrland"],
     "landskap": ["östergötland", "västergötland", "södermanland"],
     "stad":     ["linköping", "motala", "mjölby", "mariefred", "nyköping", "piteå", "sandviken", "sollefteå", "kramfors", "örnsköldsvik"]
             }
