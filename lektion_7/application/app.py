@@ -10,7 +10,6 @@
 from markupsafe import escape
 from application import func
 from flask import Flask, render_template, request
-import json
 
 # Skapa ett Flask server-objekt. Det är denna som ni sedan startar med 'flask run' från terminalen.
 app = Flask(__name__) 
@@ -32,7 +31,7 @@ def form():
     '''Denna funktion körs när man går till servern med  endpoint '/form'. 
        På en statisk webbsida skulle detta t.ex kunna motsvara filen mappen /form med filen index.htm'''
 
-    
+    ##### Plats för er kod #####
 
     return render_template('form.html')
 
@@ -52,12 +51,10 @@ def api_post():
     country_code= request.form["countrycode"]
 
     # Skapa URL för det API vi skall använda, med en formaterad sträng och injecera variablerna year, samt country_code
-    data_url = f"https://date.nager.at/api/v3/{availablecountries}"
+    data_url = f"https://date.nager.at/api/v3/PublicHolidays/{year}/{country_code}"
 
     # Använd nu den kod vi brutit ut och lagt till i func.py för att utföra arbetet
     data = func.json_url_to_html_table(data_url)
-
-    availablecountries = json.load(data)
 
     # Skicka tillbaka resultatet till browsern med Jinja, dvs uppdatera mallen index.html med innehållet i variabeln data
     return render_template('index.html', data=data)
