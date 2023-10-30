@@ -15,6 +15,7 @@ from flask import Flask, render_template, request
 app = Flask(__name__) 
 
 
+
 @app.route("/") 
 def index():
     '''Denna funktion körs när man går till servern utan endpoint. 
@@ -73,3 +74,5 @@ def xml():
 
     # Skicka tillbaka resultatet till browsern med Jinja, dvs uppdatera mallen index.html med innehållet i variabeln data
     return render_template('index.html', data=data)
+
+
